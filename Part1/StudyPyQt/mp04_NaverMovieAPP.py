@@ -3,12 +3,13 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from NaverAPI import *
+from urllib.request import urlopen
 import webbrowser # 웹브라우저 모듈
 
 class qtApp(QWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('./studyPyQt/NaverAPISearch.ui',self)
+        uic.loadUi('./studyPyQt/NaverAPIMovie.ui',self)
         self.setWindowIcon(QIcon('./studyPyQt/newsPaper.png'))
         
         # 검색 버튼 클릭시그널 / 슬롯함수
@@ -18,12 +19,8 @@ class qtApp(QWidget):
         self.tblresult.doubleClicked.connect(self.tblresultDoubleClicked)
 
     def tblresultDoubleClicked(self):
-        # row = self.tblresult.currentIndex().row()
-        # column = self.tblresult.currentIndex().column()
-        # print(row,column)
         selected = self.tblresult.currentRow()
-        url = self.tblresult.item(selected,1).text() # 더블 클릭하면 url
-        # print(url) # 콘솔창에  프린트
+        url = self.tblresult.item(selected,5).text() # 더블 클릭하면 url
         webbrowser.open(url) # 웹브라우저 창에 링크가 뜬다
 
 
@@ -34,11 +31,11 @@ class qtApp(QWidget):
         search = self.txtSearch.text()
 
         if search == '':
-            QMessageBox.warning(self,'경고','검색어를 입력하세요.')
+            QMessageBox.warning(self,'경고','영화명을 입력하세요.')
             return
         else:
             api = NaverAPI() # Naver API 클래스 객체 생성
-            node = 'news' # movie로 변경하면 영화검색 가능
+            node = 'movie' # movie로 변경하면 영화검색 가능
             display = 100
 
             result = api.get_naver_search(node,search,1,display)
@@ -47,23 +44,44 @@ class qtApp(QWidget):
             items = result['items'] # json 결과 중 items 아래 배열만 추출
             self.makeTable(items) # 테이블 위젯에 데이터들을 할당하는 함수
 
-    # 테이블 위젯에 데이터 display
+    # 테이블 위젯에 데이터 display -- 네이버 영화 결과에 맞춰서 변경 : title, pubDate, director, actor, userRating, link, image
     def makeTable(self,items) -> None:
         self.tblresult.setSelectionMode(QAbstractItemView.SingleSelection)
-        self.tblresult.setColumnCount(2)
+        self.tblresult.setColumnCount(7)
         self.tblresult.setRowCount(len(items)) # 현재 items 개수의 행 생성 : 100개
-        self.tblresult.setHorizontalHeaderLabels(['기사제목','뉴스링크'])
-        self.tblresult.setColumnWidth(0,310)
-        self.tblresult.setColumnWidth(1,260)
+        self.tblresult.setHorizontalHeaderLabels(['영화제목','개봉년도','감독','배우진','평점','링크','포스터'])
+        self.tblresult.setColumnWidth(0,150)
+        self.tblresult.setColumnWidth(1,60) #개봉년도
+        self.tblresult.setColumnWidth(2,100) #감독
+        self.tblresult.setColumnWidth(4,45) #평점
         # 컬럼 데이터 수정 금지
         self.tblresult.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         for i, post in enumerate(items): # 0, 뉴스 ...
             title = self.replaceHtmlTag(post['title']) # HTML 특수문자 변환
-            originallink = post['originallink']
+            pubDate = post['pubDate']
+            director = post['director']
+            actor = post['actor']
+            userRating = post['userRating']
+            link = post['link']
+            #image = QImage(requests.get(post['image'], stream = True))
+            # imgData = urlopen(post['image']).read()
+            # image = QPixmap()
+            # if imgData != None:
+            #     image.loadFromData(imgData)
+            #     imgLabel = QLabel()
+            #     imgLabel.setPixmap(image)
+            #     imgLabel.setGeometry(0,0,60,100)
+            #     imgLabel.resize(60,100)
             # setItem(행,열,넣을 데이터)
             self.tblresult.setItem(i,0,QTableWidgetItem(title))
-            self.tblresult.setItem(i,1,QTableWidgetItem(originallink))
+            self.tblresult.setItem(i,1,QTableWidgetItem(pubDate))
+            self.tblresult.setItem(i,2,QTableWidgetItem(director))
+            self.tblresult.setItem(i,3,QTableWidgetItem(actor))
+            self.tblresult.setItem(i,4,QTableWidgetItem(userRating))
+            self.tblresult.setItem(i,5,QTableWidgetItem(link))
+            # if imgData != None:
+            #     self.tblresult.setCellWidget(i,6,imgLabel)
         
     def replaceHtmlTag(self,sentence) -> str:
         result = sentence.replace('&lt','<').replace('&gt','>').replace('<b>','').replace('</b>','').replace('&apos;',"'").replace('&quot;','"')  
