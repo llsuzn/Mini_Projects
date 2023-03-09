@@ -78,10 +78,10 @@ class qtApp(QWidget):
                 imgLabel = QLabel()
                 imgLabel.setPixmap(QPixmap(image))
 
-                # 테스트
-                f = open(f'./studyPyQt/temp/image_{i+1}.png',mode='wb') # 파일 쓰기
-                f.write(data)
-                f.close()
+                # 테스트 : data를 이미지로 저장
+                # f = open(f'./studyPyQt/temp/image_{i+1}.png',mode='wb') # 파일 쓰기
+                # f.write(data)
+                # f.close()
            
             # setItem(행,열,넣을 데이터)
             self.tblresult.setItem(i,0,QTableWidgetItem(title))
