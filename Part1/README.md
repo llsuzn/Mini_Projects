@@ -6,9 +6,9 @@
 - QtDesigner 학습
 - Naver API 뉴스검색 앱 만들기
   - Python 3.11.2
+  - Naver OpenAPI 사용
   - PtQt5
   - Qt Designer
-  - Naver OpenAPI
   - Urllib.request.urlopen 이미지 다운로드 사용 *
 
 <!-- HTML 주석
