@@ -13,7 +13,11 @@
 <!-- HTML 주석
 ![네이버뉴스앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_news.png?raw=true)
 -->
-<img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_news2.png?raw=true" width=800>
+<img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_news2.png?raw=true" width=800 />
+
+- Naver API 영화검색 앱 만들기 
+  - 사용 기술 동일
+  
 
 ## DB연동 GUI 프로그램 개발 학습
 

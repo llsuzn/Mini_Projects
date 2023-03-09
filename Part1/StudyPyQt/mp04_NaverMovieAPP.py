@@ -10,7 +10,7 @@ class qtApp(QWidget):
     def __init__(self):
         super().__init__()
         uic.loadUi('./studyPyQt/NaverAPIMovie.ui',self)
-        self.setWindowIcon(QIcon('./studyPyQt/newsPaper.png'))
+        self.setWindowIcon(QIcon('./studyPyQt/movie.png'))
         
         # 검색 버튼 클릭시그널 / 슬롯함수
         self.btnSearch.clicked.connect(self.btnSearchClicked)
@@ -51,28 +51,38 @@ class qtApp(QWidget):
         self.tblresult.setRowCount(len(items)) # 현재 items 개수의 행 생성 : 100개
         self.tblresult.setHorizontalHeaderLabels(['영화제목','개봉년도','감독','배우진','평점','링크','포스터'])
         self.tblresult.setColumnWidth(0,150)
-        self.tblresult.setColumnWidth(1,60) #개봉년도
-        self.tblresult.setColumnWidth(2,100) #감독
+        self.tblresult.setColumnWidth(1,70) #개봉년도
+        self.tblresult.setColumnWidth(3,130) #배우
         self.tblresult.setColumnWidth(4,45) #평점
         # 컬럼 데이터 수정 금지
         self.tblresult.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         for i, post in enumerate(items): # 0, 뉴스 ...
-            title = self.replaceHtmlTag(post['title']) # HTML 특수문자 변환
+            title = self.replaceHtmlTag(post['title']) # HTML 특수문자 변환 / subtitle(영어제목)은 안 가져옴
+            subtitle = post['subtitle']
+            title = f'{title}\n ({subtitle})'
             pubDate = post['pubDate']
-            director = post['director']
-            actor = post['actor']
+            director = post['director'].replace('|',',')[:-1] # [:-1] 마지막에 있는 쉼표를 없애줌 
+            actor = post['actor'].replace('|',',')[:-1]  # [:-1] : 파이썬에서만 가능하다
             userRating = post['userRating']
             link = post['link']
-            #image = QImage(requests.get(post['image'], stream = True))
-            # imgData = urlopen(post['image']).read()
-            # image = QPixmap()
-            # if imgData != None:
-            #     image.loadFromData(imgData)
-            #     imgLabel = QLabel()
-            #     imgLabel.setPixmap(image)
-            #     imgLabel.setGeometry(0,0,60,100)
-            #     imgLabel.resize(60,100)
+           
+            img_url = post['image']
+
+            # print(img_url == '') # 포스터가 없는 영화 true로 출력 받기
+            if img_url != '': #포스터가 존재한다면
+                data = urlopen(img_url).read() # 2진 데이터 -> 네이버 영화에 있는 이미지 읽어오기: 텍스트형태(경로정보)
+                image = QImage() # 이미지 담을 수 있는 객체 생성
+                image.loadFromData(data)
+                # QtableWidget 이미지를 그냥 넣을 수 없음. QLabel() 집어넣은 뒤 QLabel -> QtableWidget
+                imgLabel = QLabel()
+                imgLabel.setPixmap(QPixmap(image))
+
+                # 테스트
+                f = open(f'./studyPyQt/temp/image_{i+1}.png',mode='wb') # 파일 쓰기
+                f.write(data)
+                f.close()
+           
             # setItem(행,열,넣을 데이터)
             self.tblresult.setItem(i,0,QTableWidgetItem(title))
             self.tblresult.setItem(i,1,QTableWidgetItem(pubDate))
@@ -80,8 +90,13 @@ class qtApp(QWidget):
             self.tblresult.setItem(i,3,QTableWidgetItem(actor))
             self.tblresult.setItem(i,4,QTableWidgetItem(userRating))
             self.tblresult.setItem(i,5,QTableWidgetItem(link))
-            # if imgData != None:
-            #     self.tblresult.setCellWidget(i,6,imgLabel)
+            # self.tblresult.setItem(i,6,QTableWidgetItem(img_url))
+            if img_url != '':
+                self.tblresult.setCellWidget(i,6,imgLabel)
+                self.tblresult.setRowHeight(i,110) # 포스터가 있으면 쉘 높이를 늘림
+            else:
+                self.tblresult.setItem(i,6,QTableWidgetItem('No Poster!'))
+
         
     def replaceHtmlTag(self,sentence) -> str:
         result = sentence.replace('&lt','<').replace('&gt','>').replace('<b>','').replace('</b>','').replace('&apos;',"'").replace('&quot;','"')  
