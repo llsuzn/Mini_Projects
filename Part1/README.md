@@ -19,6 +19,16 @@
   - PtQt5/Qt Designer
   - urllib.request.urlopen 이미지 다운로드 사용 *
   <img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_movie.png?raw=true" width=800 /> 
+
+- DB연동 GUI 개발 학습
+  - 주소록 앱 만들기
+    - Python 3.11.2
+    - MySQL 8.0 연동
+    - pymysql 모듈 사용
+    - PtQt5/Qt Designer
+    ![주소록앱_저장1](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save0.png?raw=true)
+    ![주소록앱_저장2](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save1.png?raw=true)  
+    ![주소록앱_삭제](https://github.com/llsuzn/Mini_Projects/blob/main/images/delete.png?raw=true)  
   
 
 ## DB연동 GUI 프로그램 개발 학습
