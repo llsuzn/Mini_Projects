@@ -6,9 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>478</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -24,7 +42,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>621</width>
+      <width>581</width>
       <height>141</height>
      </rect>
     </property>
@@ -37,7 +55,7 @@
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>26</y>
           <width>60</width>
           <height>12</height>
@@ -58,7 +76,7 @@
        <widget class="QLineEdit" name="txtName">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>20</y>
           <width>210</width>
           <height>20</height>
@@ -71,7 +89,7 @@
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>86</y>
           <width>60</width>
           <height>12</height>
@@ -92,7 +110,7 @@
        <widget class="QLineEdit" name="txtEmail">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>80</y>
           <width>210</width>
           <height>20</height>
@@ -102,7 +120,7 @@
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>56</y>
           <width>60</width>
           <height>12</height>
@@ -123,7 +141,7 @@
        <widget class="QLineEdit" name="txtPhone">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>50</y>
           <width>210</width>
           <height>20</height>
@@ -136,7 +154,7 @@
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>116</y>
           <width>60</width>
           <height>12</height>
@@ -157,7 +175,7 @@
        <widget class="QLineEdit" name="txtAddress">
         <property name="geometry">
          <rect>
-          <x>80</x>
+          <x>90</x>
           <y>110</y>
           <width>210</width>
           <height>20</height>
@@ -167,9 +185,9 @@
        <widget class="QPushButton" name="btnNew">
         <property name="geometry">
          <rect>
-          <x>438</x>
+          <x>320</x>
           <y>100</y>
-          <width>75</width>
+          <width>80</width>
           <height>30</height>
          </rect>
         </property>
@@ -180,14 +198,31 @@
        <widget class="QPushButton" name="btnSave">
         <property name="geometry">
          <rect>
-          <x>514</x>
+          <x>398</x>
           <y>100</y>
-          <width>75</width>
+          <width>80</width>
           <height>30</height>
          </rect>
         </property>
         <property name="text">
          <string>저장</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDel">
+        <property name="geometry">
+         <rect>
+          <x>485</x>
+          <y>100</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:rgb(255,50,50);
+color:rgb(255,255,255);</string>
+        </property>
+        <property name="text">
+         <string>삭제</string>
         </property>
        </widget>
       </widget>
@@ -199,8 +234,8 @@
      <rect>
       <x>9</x>
       <y>159</y>
-      <width>621</width>
-      <height>291</height>
+      <width>581</width>
+      <height>221</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
