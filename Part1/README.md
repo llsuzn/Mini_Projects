@@ -26,9 +26,15 @@
     - MySQL 8.0 연동
     - pymysql 모듈 사용
     - PtQt5/Qt Designer
-    ![주소록앱_저장1](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save0.png?raw=true)
-    ![주소록앱_저장2](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save1.png?raw=true)  
-    ![주소록앱_삭제](https://github.com/llsuzn/Mini_Projects/blob/main/images/delete.png?raw=true)  
+    
+      - 저장
+
+        ![주소록앱_저장1](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save0.png?raw=true)
+        ![주소록앱_저장2](https://github.com/llsuzn/Mini_Projects/blob/main/images/addressbook_save1.png?raw=true)  
+    
+      - 삭제할 데이터가 없으면
+
+        ![주소록앱_삭제](https://github.com/llsuzn/Mini_Projects/blob/main/images/delete.png?raw=true)  
   
 
 ## DB연동 GUI 프로그램 개발 학습
