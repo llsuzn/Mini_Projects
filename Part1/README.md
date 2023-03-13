@@ -7,7 +7,7 @@
 - Naver API 뉴스검색 앱 만들기
   - Python 3.11.2
   - Naver OpenAPI 사용
-  - PtQt5/Qt Designer
+  - PyQt5/Qt Designer
   <!-- HTML 주석
   ![네이버뉴스앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_news.png?raw=true)
   -->
@@ -16,7 +16,7 @@
 - Naver API 영화검색 앱 만들기 
   - Python 3.11.2
   - Naver OpenAPI 사용
-  - PtQt5/Qt Designer
+  - PyQt5/Qt Designer
   - urllib.request.urlopen 이미지 다운로드 사용 *
   <img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/naver_movie.png?raw=true" width=800 /> 
 
@@ -25,7 +25,7 @@
   - Python 3.11.2
   - MySQL 8.0 연동
   - pymysql 모듈 사용
-  - PtQt5/Qt Designer
+  - PyQt5/Qt Designer
   
     - 저장
 
@@ -39,7 +39,7 @@
 ## 파이썬 관련 추가학습
 - QR 코드 생성 앱
   - qrcode 모듈 사용
-  - PtQt
+  - PyQt
 
   ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/qrcodeApp.png?raw=true)  
 
@@ -48,8 +48,8 @@
   - psutil 모듈
   - socket 모듈
   - requests 모듈
-  - PtQt
-  
+  - PyQt
+
   ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/cominfoApp.png?raw=true)  
 
 
