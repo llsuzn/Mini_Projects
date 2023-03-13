@@ -39,9 +39,19 @@
 ## 파이썬 관련 추가학습
 - QR 코드 생성 앱
   - qrcode 모듈 사용
+  - PtQt
+
+  ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/qrcodeApp.png?raw=true)  
+
 
 - 컴퓨터 정보출력 앱
+  - psutil 모듈
+  - socket 모듈
+  - requests 모듈
+  - PtQt
   
+  ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/cominfoApp.png?raw=true)  
+
 
 
 ## 미니프로젝트 실습
