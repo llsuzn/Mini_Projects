@@ -52,6 +52,11 @@
 
   ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/cominfoApp.png?raw=true)  
 
+- TTS(Text To Speech)
+  - gtts 모듈
+  - playsound 모듈
 
+- 암호 해제 프로그램
+  - itertools, zipfile 모듈
 
 ## 미니프로젝트 실습
