@@ -50,7 +50,7 @@
   - requests 모듈
   - PyQt
 
-  ![qr코드 앱](https://github.com/llsuzn/Mini_Projects/blob/main/images/cominfoApp.png?raw=true)  
+  ![컴퓨터 정보](https://github.com/llsuzn/Mini_Projects/blob/main/images/cominfoApp.png?raw=true)  
 
 - TTS(Text To Speech)
   - gtts 모듈
@@ -62,7 +62,12 @@
 
 - 스레드 사용법
   - GUI와 처리시간이 긴 로직을 실행하면 반드시 스레드 사용! 
+  ![스레드 노스레드 비교](https://github.com/llsuzn/Mini_Projects/blob/main/images/thread.png?raw=true)
 
 - 이메일 전송, 대량메일 전송
 
+- PyGame
+
 ## 미니프로젝트 실습
+- 테스트앱 만들기
+
