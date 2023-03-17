@@ -66,7 +66,9 @@
 
 - 이메일 전송, 대량메일 전송
 
-- PyGame
+- 게임 만들기 - DinoRun
+  - PyGame
+<img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/PyGame.png?raw=true" width=800 />   
 
 ## 미니프로젝트 실습
 - 테스트앱 만들기
