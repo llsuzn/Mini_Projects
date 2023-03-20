@@ -83,6 +83,7 @@
 
 - 계산기 앱
   - PyQt  
+  - 16개 signal을 1개의 slot함수로 처리
   ![전국 대학교](https://github.com/llsuzn/Mini_Projects/blob/main/images/calculator.png?raw=true)
     
 ## 미니프로젝트 실습
