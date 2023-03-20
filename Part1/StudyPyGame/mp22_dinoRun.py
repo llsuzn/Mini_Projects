@@ -7,7 +7,8 @@ pygame.init()
 
 ASSETS = './StudyPyGame/Assets/'
 SCREEN_WIDTH = 1100 # 게임 윈도우 넓이
-SCREEN = pygame.display.set_mode((SCREEN_WIDTH,600))
+SCREEN_HEIGHT = 600
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 icon = pygame.image.load('./StudyPyGame/dinoRun.png')
 pygame.display.set_caption('달려라 공룡')
 pygame.display.set_icon(icon)
@@ -22,6 +23,10 @@ DUCKING = [pygame.image.load(f'{ASSETS}Dino/DinoDuck1.png'),
            pygame.image.load(f'{ASSETS}Dino/DinoDuck2.png')]
 
 JUMPING = pygame.image.load(f'{ASSETS}Dino/DinoJump.png')
+
+START = pygame.image.load(f'{ASSETS}Dino/DinoStart.png') # 시작 아이콘(공룡)
+
+DEAD = pygame.image.load(f'{ASSETS}Dino/DinoDead.png') # 종료 아이콘(공룡)
 
 # 구름 이미지
 CLOUD = pygame.image.load(f'{ASSETS}Other/Cloud.png')
@@ -161,7 +166,7 @@ class SmallCactus(Obstacle):
         self.rect.y = 325        
 
 def main():
-    global game_speed, x_pos_bg, y_pos_bg, points, obstacles
+    global game_speed, x_pos_bg, y_pos_bg, points, obstacles, font
     x_pos_bg = 0
     y_pos_bg = 380
     points = 0 # 게임점수는 0부터 시작
@@ -171,6 +176,7 @@ def main():
     cloud = Cloud() # 구름 객체 생성
     game_speed = 14
     obstacles = []
+    death_count = 0 # 죽은 횟수
 
     font = pygame.font.Font(f'{ASSETS}NanumGothicBold.ttf', 20)
 
@@ -225,11 +231,45 @@ def main():
             obs.update()
             # Collision Detection
             if dino.dino_rect.colliderect(obs.rect): # 충돌감지하는 함수
-                pygame.draw.rect(SCREEN, (255,0,0), dino.dino_rect,3) 
-
+                # pygame.draw.rect(SCREEN, (255,0,0), dino.dino_rect,3) 
+                pygame.time.delay(1500) # 1.5초
+                death_count += 1
+                menu(death_count) # 메인 메뉴 화면으로 전환
 
         clock.tick(30) # 프레임 개수
         pygame.display.update() # 초당 30번 업데이트
 
+def menu(death_count): # 메뉴 함수
+    global points
+    run = True
+    font = pygame.font.Font(f'{ASSETS}NanumGothicBold.ttf', 20)
+
+    while run:
+        SCREEN.fill((255,255,255)) # 화면을 하얗게
+        if death_count == 0: # 최초
+            text = font.render('시작하려면 아무키나 누르세요.', True, (83,83,83))
+            SCREEN.blit(START, (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+        elif death_count > 0: # 게임을 하다가 죽으면
+            text = font.render('재시작 하려면 아무키나 누르세요', True, (83,83,83))
+            score = font.render(f'SCORE: {points}', True, (83,83,83))
+            scoreRect = score.get_rect()
+            scoreRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 50) 
+            SCREEN.blit(score,scoreRect)
+            SCREEN.blit(DEAD, (SCREEN_WIDTH // 2 - 20, SCREEN_HEIGHT // 2 - 140))
+
+
+        textRect = text.get_rect()
+        textRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 )
+        SCREEN.blit(text,textRect)
+        
+        pygame.display.update()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.quit() # 완전 종료
+            if event.type == pygame.KEYDOWN:
+                main()                
+
 if __name__ == '__main__':
-    main()        
+    menu(death_count=0)

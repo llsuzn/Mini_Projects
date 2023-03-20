@@ -70,6 +70,11 @@
   - PyGame
 <img src="https://github.com/llsuzn/Mini_Projects/blob/main/images/PyGame.png?raw=true" width=800 />   
 
+  ![게임시작](https://github.com/llsuzn/Mini_Projects/blob/main/images/StartGame.png?raw=true)
+  ![게임진행](https://github.com/llsuzn/Mini_Projects/blob/main/images/GamePlay.png?raw=true)
+  ![게임종료](https://github.com/llsuzn/Mini_Projects/blob/main/images/EndGame.png?raw=true)
+
+
 ## 미니프로젝트 실습
 - 테스트앱 만들기
 
