@@ -80,6 +80,10 @@
   - PyQt
     - QWebEngineView 추가
   ![전국 대학교](https://github.com/llsuzn/Mini_Projects/blob/main/images/universityMap.png?raw=true)    
+
+- 계산기 앱
+  - PyQt  
+  ![전국 대학교](https://github.com/llsuzn/Mini_Projects/blob/main/images/calculator.png?raw=true)
     
 ## 미니프로젝트 실습
 - 테스트앱 만들기
