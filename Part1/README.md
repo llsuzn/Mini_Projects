@@ -68,12 +68,20 @@
 
 - 게임 만들기 - DinoRun
   - PyGame
+  - 게임화면
   ![게임시작](https://github.com/llsuzn/Mini_Projects/blob/main/images/StartGame.png?raw=true)
   ![게임진행](https://github.com/llsuzn/Mini_Projects/blob/main/images/GamePlay.png?raw=true)
   ![게임진행](https://github.com/llsuzn/Mini_Projects/blob/main/images/PyGame.png?raw=true)
   ![게임종료](https://github.com/llsuzn/Mini_Projects/blob/main/images/EndGame.png?raw=true)
 
-
+- 전국 대학교 위치맵
+  - pandas
+  - folium
+  - PyQt
+    - QWebEngineView 추가
+  ![전국 대학교](https://github.com/llsuzn/Mini_Projects/blob/main/images/universityMap.png?raw=true)    
+    
 ## 미니프로젝트 실습
 - 테스트앱 만들기
 
+[팀 리포지토리]
