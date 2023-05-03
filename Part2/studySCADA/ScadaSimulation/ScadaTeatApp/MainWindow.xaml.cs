@@ -1,6 +1,6 @@
 ﻿using MahApps.Metro.Controls;
 using Newtonsoft.Json;
-using ScadaTeatApp.Models;
+using ScadaTestApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BogusTeatApp
+namespace BogusTestApp
 {
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리

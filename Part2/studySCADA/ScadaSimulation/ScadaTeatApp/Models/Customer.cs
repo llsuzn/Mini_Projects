@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScadaTeatApp.Models
+namespace ScadaTestApp.Models
 {
     public class Customer                   // 고객 테이블 매핑
     {

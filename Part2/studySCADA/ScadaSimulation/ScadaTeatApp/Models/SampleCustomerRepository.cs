@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScadaTeatApp.Models
+namespace ScadaTestApp.Models
 {
     public class SampleCustomerRepository
     {
