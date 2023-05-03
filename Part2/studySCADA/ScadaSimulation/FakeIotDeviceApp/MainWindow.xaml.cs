@@ -93,5 +93,17 @@ namespace FakeIotDeviceApp
             Client.Connect("SmartHomeDev"); // publish Client ID를 지정
 
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(Client != null && Client.IsConnected == true)
+            {
+                Client.Disconnect();    // 접속을 끊어주고
+            }
+            if(MqttThread != null)
+            {
+                MqttThread.Abort();     // 여기가 없으면 프로그램 종료후에도 메모리에 남아있음 !
+            }
+        }
     }
 }
