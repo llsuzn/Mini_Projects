@@ -18,7 +18,7 @@
 	- 대용량 데이터 차트는 OxyChart를 사용
 	
 - 온습도 더미데이터 시뮬레이터
-<img src="https://github.com/llsuzn/Mini_Projects/Part2/images/Fake IOT Device.gif?raw=true" width=700 />
+<img src="https://github.com/llsuzn/Mini_Projects/blob/main/Part2/images/Fake%20IOT%20Device.gif?raw=true" width=700 />
 
 - 스마트홈 모니터링 앱
-<img src="https://github.com/llsuzn/Mini_Projects/Part2/images/SmartHome Monitoring System.gif?raw=true" width=700 />
+<img src="https://github.com/llsuzn/Mini_Projects/blob/main/Part2/images/SmartHome%20Monitoring%20System.gif?raw=true" width=700 />
