@@ -19,5 +19,6 @@
 	
 - 온습도 더미데이터 시뮬레이터
 <img src="https://github.com/llsuzn/Mini_Projects/Part2/studySCADA/images/Fake IOT Device.gif?raw=true" width=700 />
+
 - 스마트홈 모니터링 앱
 <img src="https://github.com/llsuzn/Mini_Projects/Part2/studySCADA/images/SmartHome Monitoring System.gif?raw=true" width=700 />
