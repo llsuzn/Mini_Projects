@@ -1,7 +1,9 @@
 ﻿using Bogus;
+using ControlzEx.Standard;
 using FakeIotDeviceApp.Models;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,10 +29,13 @@ namespace FakeIotDeviceApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        Faker<SensorInfo> FakeHomeSensor = null;        //가짜 스마트홈 센서값 변수
+        Faker<SensorInfo> FakeHomeSensor { get; set; } = null;        //가짜 스마트홈 센서값 변수
 
-        MqttClient Client;
+        MqttClient Client { get; set; }
         Thread MqttThread { get; set; }
+
+        // MQTT Publish json 데이터 건수 체크변수
+        int MaxCount { get; set; } = 10;    // 50개가 만들어지면 지워지고 다시 50개 만들어준다
 
         public MainWindow()
         {
@@ -64,6 +69,7 @@ namespace FakeIotDeviceApp
             StartPublish();
         }
 
+        // 핵심처리 센싱된 데이터값을 MQTT브로커로 전송
         private void StartPublish()
         {
 
@@ -74,10 +80,27 @@ namespace FakeIotDeviceApp
                 {
                     // 가짜 스마트홈 센서값 생성
                     SensorInfo Info = FakeHomeSensor.Generate();
-                    Debug.WriteLine($"{Info.Home_Id} / {Info.Sensing_DateTime} / {Info.Temp}");
-                    //가짜 스마트홈 센서값 생성
-
-                    //센서값 MQTT브로커에 전송
+                    // 릴리즈(배포)때는 주석처리/삭제
+                    Debug.WriteLine($"{Info.Home_Id} / {Info.Room_Name} / {Info.Sensing_DateTime} / {Info.Temp}");
+                    // 객체 직렬화 (객체데이터를 xml이나 json등의 문자열로 변환)
+                    var jsonValue = JsonConvert.SerializeObject(Info, Formatting.Indented);
+                    // 센서값 MQTT브로커에 전송(Publish)
+                    Client.Publish("SmartHome/IoTData/", Encoding.Default.GetBytes(jsonValue));
+                    // 스레드와 UI스레드간 충돌이 안나도록 변경
+                    this.Invoke(new Action(() => {
+                        if (MaxCount <= 0)
+                        {
+                            // 데이터가 쌓여서 느려지기 때문에 50개가 쌓이면 지워주는 코드
+                            RtbLog.SelectAll();
+                            RtbLog.Selection.Text = string.Empty;
+                            MaxCount = 10;
+                            RtbLog.AppendText(">>> 데이터가 쌓여서 초기화 합니다.\n\n");
+                        }
+                        // RtbLog에 출력                        
+                        RtbLog.AppendText($"{jsonValue}\n");
+                        RtbLog.ScrollToEnd(); // 스크롤 제일 밑으로 보내기
+                        MaxCount--;
+                    }));
 
                     //1초동안 대기
                     Thread.Sleep(1000);
