@@ -16,6 +16,7 @@
 	- 실행 후 시간이 소요되면 UI 제어가 느려짐 -> TextBox에 텍스트가 과도 - 해결!!
 	- LiveCharts는 실시간 게이지외 대용량 데이터 차트는 무리
 	- 대용량 데이터 차트는 OxyChart를 사용
+	
 - 온습도 더미데이터 시뮬레이터
 <img src="https://github.com/llsuzn/Mini_Projects/Part2/studySCADA/images/Fake IOT Device.gif?raw=true" width=700 />
 - 스마트홈 모니터링 앱
