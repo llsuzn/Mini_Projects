@@ -17,6 +17,7 @@ using System.Diagnostics;
 using SmartHomeMonitoringApp.Views;
 using MahApps.Metro.Controls.Dialogs;
 using SmartHomeMonitoringApp.Logics;
+using ControlzEx.Theming;
 
 namespace SmartHomeMonitoringApp
 {
@@ -25,9 +26,14 @@ namespace SmartHomeMonitoringApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        string DefaultTheme { get; set; } = "Light";
+        string DefaultAccent { get; set; } = "Purple";
         public MainWindow()
         {
             InitializeComponent();
+
+            ThemeManager.Current.ThemeSyncMode = ThemeSyncMode.SyncWithAppMode;
+            ThemeManager.Current.SyncTheme();
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -118,6 +124,58 @@ namespace SmartHomeMonitoringApp
             var about = new About();
             about.Owner = this;
             about.ShowDialog();
+        }
+
+        //모든 테마와 액센트를 전부 처리할 체크 이벤트 핸들러
+        private void MnuThemeAccent_Clicked(object sender, RoutedEventArgs e)
+        {
+            // 클릭되는 테마가 라이트인지 다크인지 판단 / 라이트를 클릭하면 다트는 체크해제, 다크를 클릭하면 라이트를 체크해제
+            Debug.WriteLine((sender as MenuItem).Header);
+            // 액센트도 체크를 하는 값을 나머지 액센트 전부 체크 해제
+
+            switch ((sender as MenuItem).Header)
+            {
+                case "Light":
+                    MnuLightTheme.IsCheckable = true;
+                    MnuDarkTheme.IsCheckable = false;
+                    DefaultTheme = "Light";
+                    break;
+                case "Dark":
+                    MnuLightTheme.IsCheckable = false;
+                    MnuDarkTheme.IsCheckable = true;
+                    DefaultTheme = "Dark";
+                    break;
+                case "Amber":
+                    MnuAccentMagenta.IsCheckable = true;
+                    MnuAccentBlue.IsCheckable = false;
+                    MnuAccentBrown.IsCheckable = false; 
+                    MnuAccentCobalt.IsCheckable = false;
+                    DefaultAccent = "Magenta";
+                    break;
+                case "Blue":
+                    MnuAccentMagenta.IsCheckable = false;
+                    MnuAccentBlue.IsCheckable = true;
+                    MnuAccentBrown.IsCheckable = false;
+                    MnuAccentCobalt.IsCheckable = false;
+                    DefaultAccent = "Blue";
+                    break;
+                case "Brown":
+                    MnuAccentMagenta.IsCheckable = false;
+                    MnuAccentBlue.IsCheckable = false;
+                    MnuAccentBrown.IsCheckable = true;
+                    MnuAccentCobalt.IsCheckable = false;
+                    DefaultAccent = "Brown";
+                    break;
+                case "Cobalt":
+                    MnuAccentMagenta.IsCheckable = false;
+                    MnuAccentBlue.IsCheckable = false;
+                    MnuAccentBrown.IsCheckable = false;
+                    MnuAccentCobalt.IsCheckable = true;
+                    DefaultAccent = "Cobalt";
+                    break;
+            }
+
+            ThemeManager.Current.ChangeTheme(this, $"{DefaultTheme}.{DefaultAccent}");
         }
     }
 }

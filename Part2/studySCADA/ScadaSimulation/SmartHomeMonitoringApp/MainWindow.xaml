@@ -79,8 +79,19 @@
                     <MenuItem.Icon>
                         <iconPacks:PackIconRemixIcon Kind="Brush2Line" />
                     </MenuItem.Icon>
+                    <MenuItem Header="테마">
+                        <MenuItem x:Name="MnuLightTheme" Header="Light" IsChecked="True" IsCheckable="False" Click="MnuThemeAccent_Clicked"/>
+                        <MenuItem x:Name="MnuDarkTheme" Header="Dark" IsCheckable="False" IsChecked="False" Click="MnuThemeAccent_Clicked"/>
+                    </MenuItem>
+                    <MenuItem Header="액센트">
+                        <MenuItem x:Name="MnuAccentMagenta" Header="Magenta" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Clicked"/>
+                        <MenuItem x:Name="MnuAccentBlue" Header="Blue" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Clicked"/>
+                        <MenuItem x:Name="MnuAccentBrown" Header="Brown" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Clicked"/>
+                        <MenuItem x:Name="MnuAccentCobalt" Header="Cobalt" IsChecked="False" IsCheckable="True" Click="MnuThemeAccent_Clicked"/>
+                    </MenuItem>
                 </MenuItem>
 
+                
                 <MenuItem Header="도움말">
                     <MenuItem.Icon>
                         <iconPacks:PackIconMaterial Kind="Help" />
