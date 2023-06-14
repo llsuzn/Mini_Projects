@@ -16,11 +16,7 @@ namespace SmartHomeMonitoringApp.Logics
         //화면마다 공유할 MQTT 브로커 IP 변수
         public static string BROKERHOST { get; set; } = "210.119.12.56";
 
-<<<<<<< Updated upstream
         public static string MQTTTOPIC { get; set; } = "pknu/pi/control/";
-=======
-        public static string MQTTTOPIC { get; set; } = "pknu/rpi/control/";
->>>>>>> Stashed changes
 
         public static string MYSQL_CONNSTRING { get; set; } = "Server=localhost;" + 
                                                               "Port=3306;" + 
