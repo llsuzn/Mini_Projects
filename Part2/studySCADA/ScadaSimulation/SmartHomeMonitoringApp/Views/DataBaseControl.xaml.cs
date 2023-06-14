@@ -150,11 +150,14 @@ namespace SmartHomeMonitoringApp.Views
             var currValue = JsonConvert.DeserializeObject<Dictionary<string, string>>(msg);
             if(currValue != null)
             {
-                //Debug.WriteLine(currValue["Home_Id"]);
-                //Debug.WriteLine(currValue["Room_Name"]);
-                //Debug.WriteLine(currValue["Sensing_DateTime"]);
-                //Debug.WriteLine(currValue["Temp"]);
-                //Debug.WriteLine(currValue["Humid"]);
+                Debug.WriteLine(currValue["DEV_ID"]);
+                Debug.WriteLine(currValue["TYPE"]);
+                Debug.WriteLine(currValue["CURR_DT"]);
+                Debug.WriteLine(currValue["STAT"]);
+                //Living
+                var tmp = currValue["STAT"].Split('|');     // 29.0 | 35.0 잘라준 다음
+                var temp = tmp[0].Trim();   // 29.0 trim 공백제거
+                var humid = tmp[1].Trim();  // 45.0 trim 공백제거
                 try
                 {
                     using (MySqlConnection conn = new MySqlConnection(Commons.MYSQL_CONNSTRING))
@@ -174,11 +177,10 @@ namespace SmartHomeMonitoringApp.Views
                                               @Humid)";
 
                         MySqlCommand cmd = new MySqlCommand(insQuery, conn);
-                        cmd.Parameters.AddWithValue("@Home_Id", currValue["Home_Id"]);
-                        cmd.Parameters.AddWithValue("@Room_Name", currValue["Room_Name"]);
-                        cmd.Parameters.AddWithValue("@Sensing_DateTime", currValue["Sensing_DateTime"]);
-                        cmd.Parameters.AddWithValue("@Temp", currValue["Temp"]);
-                        cmd.Parameters.AddWithValue("@Humid", currValue["Humid"]);
+                        cmd.Parameters.AddWithValue("@Home_Id", currValue["DEV_ID"]);
+                        cmd.Parameters.AddWithValue("@Room_Name", "Living");
+                        cmd.Parameters.AddWithValue("@Sensing_DateTime", currValue["CURR_DT"]);
+                        cmd.Parameters.AddWithValue("@Temp", temp);
                         
                         if (cmd.ExecuteNonQuery() == 1)
                         {
